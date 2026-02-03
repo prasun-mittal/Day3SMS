@@ -1,7 +1,10 @@
 package com.example.day3sms.controller;
 
+import com.example.day3sms.dto.StudentRequestDto;
+import com.example.day3sms.dto.StudentResponseDto;
 import com.example.day3sms.model.StudentModel;
 import com.example.day3sms.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +21,12 @@ public class StudentController {
     // Create Function API
 
     @PostMapping("/add-student")
-    public StudentModel addStudent(@RequestBody StudentModel student){
+    public StudentResponseDto addStudent(@Valid @RequestBody StudentRequestDto student){
         return service.addStudent(student);
     }
     @GetMapping("/students")
-    public List<StudentModel> getStudents(){
-        return service.getStudents();
+    public List<StudentResponseDto> getStudents(){
+        return service.getAllStudents();
     }
 
     @GetMapping("/students/{id}")
