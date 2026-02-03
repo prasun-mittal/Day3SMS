@@ -51,7 +51,7 @@ public class StudentService {
 
     // display students by id
 
-    public StudentResponseDto getStudentById(String id) {
+    public StudentResponseDto getStudent(String id) {
         StudentModel student = repository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with id: " + id));
         return new StudentResponseDto(

@@ -30,12 +30,12 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public String getStudents(@PathVariable String id){
-        return service.getStudent(id).getName();
+    public StudentResponseDto getStudents(@PathVariable String id){
+        return service.getStudent(id);
     }
 
     @PutMapping("/update/{id}")
-    public StudentModel updateStudent(@PathVariable String id,@RequestBody StudentModel student){
+    public StudentResponseDto updateStudent(@PathVariable String id,@Valid @RequestBody StudentRequestDto student){
         return service.updateStudent(id,student);
     }
 
